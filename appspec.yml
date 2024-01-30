@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+hooks:
+  AfterInstall:
+    - location: scripts/install.sh
+      timeout: 300
+      runas: ec2-user
+  ApplicationStart:
+    - location: scripts/start_app.yml
+      timeout: 300
+      runas: ec2-user
+  ApplicationStop:
+    - location: scripts/delete_container.yml
+      timeout: 600
+      runas: ec2-user
